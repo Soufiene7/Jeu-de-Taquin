@@ -14,10 +14,14 @@ for i in range(0,9):
 global Lph , LAff
 Lph = photos[0:9]
 
-can=Canvas( width=540,height=540,bg='white')
-can.pack( side =TOP, padx =20, pady =20)
+
+image_path = "C:/Users/marwa/Jeu-de-Taquin/projet ia/images/img.png"  
+fenetre_img = PhotoImage(file=image_path)
+can = Canvas(fenetre, width=540, height=540, bg='white')
+can.pack(side=TOP, padx=20, pady=20)
 fenetre['bg']='white'
 fenetre.title (' Jeu de Taquin')
+
 
 puzzl = Taquin(board,can,Lph)
 s = Solver(puzzl,fenetre)
@@ -50,12 +54,12 @@ LAff=[]
 for row in board:
     LAff.extend(row)
 
-Button(text='Set',command=mel).pack(side=LEFT)
-Button(text='Recherche en largeur',command=solv).pack(side=LEFT)
-Button(text='Recherche en profondeur',command=solv_prof).pack(side=LEFT)
-Button(text='Recherche en profondeur limité (L=3)',command=solv_prof_lim).pack(side=LEFT)
-Button(text='A *',command=solv).pack(side=LEFT)
-Button(text='Quitter',command=fenetre.quit).pack(side=LEFT)
+Button(text='Set', command=mel, bg='#0964b2', height=2, font=('Tahoma', 12), width=25,border=0,fg='white').pack(side=LEFT, padx=5)
+Button(text='Recherche en largeur', command=solv, bg='#0964b2', height=2, font=('Tahoma', 12), width=25,border=0,fg='white').pack(side=LEFT, padx=5)
+Button(text='Recherche en profondeur', command=solv_prof, bg='#0964b2', height=2, font=('Tahoma', 12), width=25,border=0,fg='white').pack(side=LEFT, padx=5)
+Button(text='Recherche en profondeur limité (L=3)', command=solv_prof_lim, bg='#0964b2', height=2, font=('Tahoma', 12), width=30,border=0,fg='white').pack(side=LEFT, padx=5)
+Button(text='Quitter', command=fenetre.quit, height=2, font=('Tahoma', 12), width=25, bg='#0964b2',border=0,fg='white').pack(side=LEFT, padx=5)
+
 for k in range(0,8) :
     eff = can.create_image((30+ 150*(k % 3)), 30+(150*( k // 3)), anchor=NW, image=Lph[0])
     aff = can.create_image((30+ 150*(k % 3)), 30+(150*( k // 3)), anchor=NW ,image = Lph[LAff[k]])
